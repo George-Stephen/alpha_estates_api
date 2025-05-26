@@ -1,44 +1,41 @@
 package com.infinie.alpha_estate_api.models.base;
 
-public class User {
-    private String id;
-    private String name;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+@Embeddable
+public class User implements Serializable {
+    @JsonProperty("full_name")
+    @Column(name = "full_name", nullable = false)
+    private String full_name;
+    @JsonProperty("email")
+    @Column(name = "email", nullable = false)
     private String email;
+    @JsonProperty("phone")
+    @Column(name = "phoneNumber", nullable = false)
     private String phoneNumber;
+    @JsonProperty("password")
+    @Column(name = "password", nullable = false)
     private String password;
+    @JsonProperty("profile")
+    @Column(name = "profileImage", nullable = false)
     private String imageUrl;
-    private String userType; // "realtor" or "buyer"
-    private String createdAt;
+    @JsonProperty("created_at")
+    @Column(name = "id", nullable = false)
+    private LocalDate createdAt;
 
-    public User() {
+
+    public String getFull_name() {
+        return full_name;
     }
 
-    public User(String id, String name, String email, String phoneNumber, String password, String imageUrl, String userType, String createdAt) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.password = password;
-        this.imageUrl = imageUrl;
-        this.userType = userType;
-        this.createdAt = createdAt;
-    }
-
-    // Getters and Setters
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setFull_name(String full_name) {
+        this.full_name = full_name;
     }
 
     public String getEmail() {
@@ -73,19 +70,12 @@ public class User {
         this.imageUrl = imageUrl;
     }
 
-    public String getUserType() {
-        return userType;
-    }
 
-    public void setUserType(String userType) {
-        this.userType = userType;
-    }
-
-    public String getCreatedAt() {
+    public LocalDate getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
     }
 }

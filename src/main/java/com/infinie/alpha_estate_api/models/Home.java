@@ -1,5 +1,10 @@
 package com.infinie.alpha_estate_api.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "home")
 public class Home {
     private String imageUrl;
     private String title;

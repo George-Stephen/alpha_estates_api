@@ -1,34 +1,36 @@
 package com.infinie.alpha_estate_api.models;
 
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import com.infinie.alpha_estate_api.models.base.User;
+import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import org.springframework.data.annotation.Id;
 
 import java.util.List;
 
-public class Agent extends User {
-    private String agentId;
+public class Agency {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String agencyId;
+
+    @EmbeddedId
+    @JsonUnwrapped
+    private User user;
+
+    @Column(name = "agencyName")
     private String agencyName;
+    @Column(name = "agencyAddress")
     private String agencyAddress;
+    @Column(name = "agencyPhone")
     private String agencyPhone;
+    @Column(name = "properties")
     private List<Home> properties;
 
 
-    public Agent(String id, String name, String email, String phoneNumber, String password, String imageUrl, String userType, String createdAt, String agentId, String agencyName, String agencyAddress, String agencyPhone, List<Home> properties) {
-        super(id, name, email, phoneNumber, password, imageUrl, userType, createdAt);
-        this.agentId = agentId;
-        this.agencyName = agencyName;
-        this.agencyAddress = agencyAddress;
-        this.agencyPhone = agencyPhone;
-        this.properties = properties;
-    }
-
-    // Getters and Setters
-    public String getAgentId() {
-        return agentId;
-    }
-
-    public void setAgentId(String agentId) {
-        this.agentId = agentId;
-    }
+    // Getters and Setter
 
     public String getAgencyName() {
         return agencyName;
