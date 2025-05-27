@@ -1,29 +1,73 @@
 package com.infinie.alpha_estate_api.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "home")
 public class Home {
+
+    @Id
+    @Column(name = "home_id")
+    private String homeId;
+
+    @Column(name = "image_url", columnDefinition = "TEXT")
     private String imageUrl;
+
+    @Column(name = "title")
     private String title;
+
+    @Column(name = "location")
     private String location;
+
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
+
+    @Column(name = "bedrooms")
     private String bedrooms;
+
+    @Column(name = "bathrooms")
     private String bathrooms;
+
+    @Column(name = "parking_spaces")
     private String parking_spaces;
+
+    @Column(name = "bed_image_url", columnDefinition = "TEXT")
     private String bed_imageUrl;
+
+    @Column(name = "bath_image_url", columnDefinition = "TEXT")
     private String bath_imageUrl;
+
+    @Column(name = "kitchen_image_url", columnDefinition = "TEXT")
     private String kitchen_imageUrl;
+
+    @Column(name = "latitude")
     private String latitude;
-    private String longitude;  // "long" is a reserved keyword in Java
+
+    @Column(name = "longitude")
+    private String longitude; // "long" is a reserved keyword in Java
+
+    @Column(name = "property_size")
     private String property_size;
-    private String realtor_phone_number;
-    private String year_built;
+
+    @Column(name = "year_built")
+    private LocalDate year_built;
+
+    @Column(name = "home_state")
     private String home_state;
+
+    @Column(name = "property_type")
     private String property_type;
+
+    @Column(name = "price")
     private String price;
+
+    @Column(name = "agency")
+    private String agency;
 
     public Home() {
     }
@@ -132,20 +176,28 @@ public class Home {
         this.property_size = property_size;
     }
 
-    public String getRealtor_phone_number() {
-        return realtor_phone_number;
+    public String getHomeId() {
+        return homeId;
     }
 
-    public void setRealtor_phone_number(String realtor_phone_number) {
-        this.realtor_phone_number = realtor_phone_number;
+    public void setHomeId(String homeId) {
+        this.homeId = homeId;
     }
 
-    public String getYear_built() {
+    public LocalDate getYear_built() {
         return year_built;
     }
 
-    public void setYear_built(String year_built) {
+    public void setYear_built(LocalDate year_built) {
         this.year_built = year_built;
+    }
+
+    public String getAgency() {
+        return agency;
+    }
+
+    public void setAgency(String agency) {
+        this.agency = agency;
     }
 
     public String getHome_state() {
